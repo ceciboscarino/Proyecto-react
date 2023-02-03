@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDom from "react-dom/client";
-import { Greeting1, Usuario } from "./Greeting1";
+import { Greeting1, Usuario, Greeting5, Greeting6, Tarjeta } from "./Greeting1";
 import Producto from "./Producto";
-
+import {Button} from "./Button";
 const root = ReactDom.createRoot(document.getElementById("root"));
 
 // 3 formas distintas de llamar una funcion (greeting)
@@ -40,5 +40,18 @@ root.render(
     <Greeting4 />
     <Usuario />
     <Producto />
+    <Greeting5 name="Ceci" edad={36} />
+    <Greeting6 name="Maxi" edad={32} />
+    <Tarjeta
+      name="Maxi"
+      age={32}
+      married={false}
+      points={[15, 20, 50.2]}
+      address={{ street: " Balcarce 179", city: "Tucuman" }}
+      Greet={function(){alert("Hello World")}}
+    />
+    <Button text= "Click me" />
+    <Button text= "Pay"/>
+    <Button text= {true} name= "Maxi"/>
   </>
 );
