@@ -3,8 +3,13 @@ import ReactDom from "react-dom/client";
 import { Greeting1, Usuario, Greeting5, Greeting6, Tarjeta } from "./Greeting1";
 import Producto from "./Producto";
 import {Button} from "./Button";
-const root = ReactDom.createRoot(document.getElementById("root"));
+import {TaskCard} from "./Task"
+import {Saludar} from "./Saludar"
 
+const root = ReactDom.createRoot(document.getElementById("root"));
+const handleChange = (e) => {
+  console.log(e.target.value)
+}
 // 3 formas distintas de llamar una funcion (greeting)
 
 function Greeting2() {
@@ -34,7 +39,7 @@ function Greeting4() {
 
 root.render(
   <>
-    <Greeting1 />
+    {/* <Greeting1 />
     <Greeting2></Greeting2>
     {Greeting3()}
     <Greeting4 />
@@ -49,9 +54,26 @@ root.render(
       points={[15, 20, 50.2]}
       address={{ street: " Balcarce 179", city: "Tucuman" }}
       Greet={function(){alert("Hello World")}}
-    />
+    />*/}
     <Button text= "Click me" />
     <Button text= "Pay"/>
-    <Button text= {true} name= "Maxi"/>
+    <Button text= {true} name= "Maxi"/> 
+    <TaskCard ready= {false}/>
+    <Saludar/>
+
+    < input id="hola" onChange={function (e){
+      console.log(e.target.value)
+    }}/>
+    < input id="hola" onChange={(e) => {
+      console.log(e.target.value)
+    }}/>
+    < input id="hola" onChange={handleChange}/>
+    <form onSubmit={(e) => {
+      e.preventDefault()
+      alert('enviado')}}>
+      <h1>Registro de Usuario</h1>>
+      <button>Send</button>
+      </form>
   </>
+
 );
