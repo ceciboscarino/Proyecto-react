@@ -1,15 +1,77 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactDom from "react-dom/client";
 import { Greeting1, Usuario, Greeting5, Greeting6, Tarjeta } from "./Greeting1";
 import Producto from "./Producto";
-import {Button} from "./Button";
-import {TaskCard} from "./Task"
-import {Saludar} from "./Saludar"
+import { Button } from "./Button";
+import { TaskCard } from "./Task";
+import { Saludar } from "./Saludar";
+import { Posts } from "./Posts";
+import "./task.css";
 
 const root = ReactDom.createRoot(document.getElementById("root"));
-const handleChange = (e) => {
-  console.log(e.target.value)
+
+function Counter() {
+  const [counter, setCounter] = useState(0);
+  const [mensaje, setMensaje] = useState("");
+
+  useEffect(() => {
+    console.log("render");
+  }, [counter]);
+
+  return (
+    <div>
+      <input onChange={(e) => setMensaje(e.target.value)} />
+      <button
+        onClick={() => {
+          alert("El mensaje es:" + mensaje);
+        }}
+      >
+        Grabar
+      </button>
+
+      <br></br>
+      <h1> Counter: {counter} </h1>
+      <button
+        onClick={() => {
+          setCounter(counter + 1);
+        }}
+      >
+        Sumar
+      </button>
+      <button
+        onClick={() => {
+          setCounter(counter - 1);
+        }}
+      >
+        Restar
+      </button>
+      <button
+        onClick={() => {
+          setCounter(0);
+        }}
+      >
+        Reinicio
+      </button>
+    </div>
+  );
 }
+
+const users = [
+  {
+    id: 1,
+    name: "Ryan ray",
+    image: "https://robohash.org/user3",
+  },
+  {
+    id: 2,
+    name: "Masi",
+    image: "https://robohash.org/user20",
+  },
+];
+
+const handleChange = (e) => {
+  console.log(e.target.value);
+};
 // 3 formas distintas de llamar una funcion (greeting)
 
 function Greeting2() {
@@ -54,7 +116,7 @@ root.render(
       points={[15, 20, 50.2]}
       address={{ street: " Balcarce 179", city: "Tucuman" }}
       Greet={function(){alert("Hello World")}}
-    />*/}
+    />
     <Button text= "Click me" />
     <Button text= "Pay"/>
     <Button text= {true} name= "Maxi"/> 
@@ -74,6 +136,15 @@ root.render(
       <h1>Registro de Usuario</h1>>
       <button>Send</button>
       </form>
+      <Posts/>
+    {users.map((user, i) => {
+      return (
+        <div key={i}>
+          <h1>{user.name}</h1>
+          <img src={user.image}/>
+        </div>
+      );
+    })}*/}
+    <Counter />
   </>
-
 );
